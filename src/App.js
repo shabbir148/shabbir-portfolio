@@ -14,6 +14,7 @@ import {
   FileText,
   Codesandbox,
 } from "lucide-react";
+import { FaCode } from "react-icons/fa"; // LeetCode placeholder icon
 
 const profileImageUrl = "/asset/My.jpeg";
 const collegeBgImageUrl = "/asset/IIITB.jpg"; // Add your college image path here
@@ -303,16 +304,19 @@ const Portfolio = () => {
     {
       title: "Paper Presentation at ICCIC",
       date: "July 25-26, 2020",
+      link: "https://www.researchgate.net/publication/347635114_A_HYBRID_APPROACH_FOR_TEXT_SUMMARIZATION",
       description:
         "Received recommendation for International Journal of Hybrid Intelligence out of 200+ submissions",
     },
     {
       title: "LeetCode Annual Badge 2023 & 2024",
+      link: "https://leetcode.com/medal/?showImg=0&id=2891487&isLevel=false",
       description:
         "Ranked in top 0.4% of LeetCoders with 1100+ questions solved",
     },
     {
       title: "LeetCode 1000-Day Streak Award",
+      link: "https://leetcode.com/medal/?showImg=0&id=6275104&isLevel=false",
       description:
         "Demonstrating exceptional consistency and problem-solving skills",
     },
@@ -401,12 +405,14 @@ const Portfolio = () => {
           <div className="flex justify-center space-x-6 mb-12">
             <a
               href="mailto:shabbirsidhpurwala7000@gmail.com"
+              title="Email"
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Mail className="w-6 h-6 text-white" />
             </a>
             <a
               href="tel:8462825001"
+              title="Phone"
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Phone className="w-6 h-6 text-white" />
@@ -415,6 +421,7 @@ const Portfolio = () => {
               href="https://github.com/shabbir148"
               target="_blank"
               rel="noopener noreferrer"
+              title="GitHub"
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Github className="w-6 h-6 text-white" />
@@ -423,6 +430,7 @@ const Portfolio = () => {
               href="https://linkedin.com/in/shabbir-sidhpurwala"
               target="_blank"
               rel="noopener noreferrer"
+              title="LinkedIn"
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Linkedin className="w-6 h-6 text-white" />
@@ -431,9 +439,19 @@ const Portfolio = () => {
               href="https://codesandbox.io/u/shabbirsidhpurwala7000"
               target="_blank"
               rel="noopener noreferrer"
+              title="CodeSandbox"
               className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <Codesandbox className="w-6 h-6 text-white" />
+            </a>
+            <a
+              href="https://leetcode.com/u/ShabbirSidhpurwala/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LeetCode"
+              className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <FaCode className="w-6 h-6 text-white" />
             </a>
           </div>
 
@@ -747,9 +765,20 @@ const Portfolio = () => {
                 <div className="flex items-start gap-3 mb-4">
                   <Award className="w-6 h-6 text-yellow-400 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">
-                      {award.title}
-                    </h3>
+                    {award.link ? (
+                      <a
+                        href={award.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-semibold text-white mb-2 block hover:underline"
+                      >
+                        {award.title}
+                      </a>
+                    ) : (
+                      <h3 className="text-lg font-semibold text-white mb-2">
+                        {award.title}
+                      </h3>
+                    )}
                     {award.date && (
                       <p className="text-sm text-purple-300 mb-2">
                         {award.date}
